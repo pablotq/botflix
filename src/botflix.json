@@ -23,7 +23,7 @@
         "promptType": "define",
         "text": "={{ $json.body.userPrompt }}",
         "options": {
-          "systemMessage": "Você é um assistente especializado em indicar filmes e séries reais e atuais.\n\nQuando o usuário pedir uma recomendação, você deve buscar mentalmente 1 filme que existam de verdade e que se encaixem na categoria solicitada.\n\nRegras:\n\n- Não invente nomes de filmes.\n- Priorize títulos populares e bem avaliados.\n- Retorne somente 1 filme por vez.\n\nFORMATO DE RESPOSTA OBRIGATÓRIO:\nResponda SOMENTE com este JSON (sem texto adicional):\n{\"title\": \"TÍTULO EXATO DO FILME\",\"type\": \"DIZER SE É FILME OU SERIE\"}\n\nREGRAS CRÍTICAS:\n\n- SEM texto antes ou depois do JSON\n- SEM explicações ou comentários\n- SEM backticks ou markdown\n- SEM a palavra \"output\"\n- APENAS o array JSON válido"
+          "systemMessage": "Você é um assistente especializado em indicar filmes e séries reais e atuais.\n\nQuando o usuário pedir uma recomendação, você deve buscar mentalmente 1 filme que existam de verdade e que se encaixem na categoria solicitada.\n\nRegras:\n\n- Não invente nomes de filmes.\n- Priorize títulos populares e bem avaliados.\n- Retorne somente 1 filme por vez.\n\nFORMATO DE RESPOSTA OBRIGATÓRIO:\nResponda SOMENTE com este JSON (sem texto adicional):\n{\"title\": \"TÍTULO EXATO DO FILME EM INGLÊS\",\"type\": \"DIZER SE É FILME OU SERIE\"}\n\nREGRAS CRÍTICAS:\n\n- SEM texto antes ou depois do JSON\n- SEM explicações ou comentários\n- SEM backticks ou markdown\n- SEM a palavra \"output\"\n- APENAS o array JSON válido"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -73,8 +73,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        704,
-        0
+        720,
+        64
       ],
       "id": "6470c140-3b66-4423-9a08-ebfc820c01d1",
       "name": "HTTP Request",
@@ -244,7 +244,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "a380bc53-ce17-46ac-8767-1c65cac38f42",
+  "versionId": "7491feb6-3a83-4ea2-8f74-ff00c06219ba",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "5e08b4cf006e043320c429ea1612b5e77e11c685c971d065a0aedecc809e7063"
