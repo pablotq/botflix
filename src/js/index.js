@@ -23,37 +23,38 @@ async function handleSearch() {
         return;
     }
 
-    const response = await fetch('https://pablotq.app.n8n.cloud/webhook/botflix', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userPrompt: mood })
-    })
+    try {
+        const response = await fetch('https://pablotq.app.n8n.cloud/webhook/botflix', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ userPrompt: mood })
+        })
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (data && data.results.length > 0) {
+        if (data && data.results.length > 0) {
 
-        const movie = data.results[0];
-        const postURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+            const movie = data.results[0];
+            const postURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-        const resultsDiv = document.getElementById('results');
-        const moviesGrid = document.getElementById('movies-grid');
-        const resultsHeader = document.getElementById('results-header');
+            const resultsDiv = document.getElementById('results');
+            const moviesGrid = document.getElementById('movies-grid');
+            const resultsHeader = document.getElementById('results-header');
 
-        resultsDiv.classList.add('show');
-        
-        let tituloH2 = "Filme Perfeito para Você";
+            resultsDiv.classList.add('show');
 
-        if (movie.title === undefined) {
-            movie.title = movie.name;
-            tituloH2 = "Série Perfeita para Você";
-        }
-        
-        resultsHeader.innerHTML = `<h2>${tituloH2}</h2>`;
+            let tituloH2 = "Filme Perfeito para Você";
 
-        moviesGrid.innerHTML = `
+            if (movie.title === undefined) {
+                movie.title = movie.name;
+                tituloH2 = "Série Perfeita para Você";
+            }
+
+            resultsHeader.innerHTML = `<h2>${tituloH2}</h2>`;
+
+            moviesGrid.innerHTML = `
             <div class="movie-card">
                 <div class="movie-poster">
                     <img src="${postURL}" alt="${movie.title} Poster" class="movie-poster"/>
@@ -66,6 +67,10 @@ async function handleSearch() {
             </div>
         `;
 
+        }
+    } catch (error) {
+        console.error('Erro ao buscar o filme:', error);
+        alert('Ocorreu um erro ao buscar o filme. Por favor, tente novamente mais tarde.');
     }
 
 
